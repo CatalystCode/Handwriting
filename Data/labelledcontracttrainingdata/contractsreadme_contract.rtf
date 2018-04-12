@@ -1,0 +1,195 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset238 Calibri;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 DATASETS LICENSE\par
+================ \par
+This work is licensed under a Creative Commons Attribution-NonCommercial-\par
+ShareAlike 4.0 International License. To view a copy of this license,\par
+visit {{\field{\*\fldinst{HYPERLINK http://creativecommons.org/licenses/by-nc-sa/4.0/ }}{\fldrslt{http://creativecommons.org/licenses/by-nc-sa/4.0/\ul0\cf0}}}}\f0\fs22 .\par
+\par
+NOTICE\par
+======\par
+This directory contains the Contract Elements datasets and dictionaries,\par
+as described in the paper:\par
+\par
+Ilias Chalkidis, Ion Androutsopoulos, and Achilleas Michos, \'e2\'80\f1\u339?Extracting \par
+Contract Elements\f0\'e2\'80\'9d. Proceedings of the 16th International Conference on \par
+Artificial Intelligence and Law (ICAIL\'e2\'80\'9917), London, UK, 2017.\par
+\par
+Please ensure you have carefully read both the paper and this document, \par
+and also examined several sample files before proceeding to further \par
+experimentation.                           \par
+\par
+\par
+There are two main directories. \par
+- The first directory (/datasets) contains the contracts in encoded \par
+format for privacy issues. \par
+- The second directory (/dictionaries) contains multiple CSV files that \par
+provide the features for the encoded vocabularies. Each CSV file has been \par
+written with a new line (\\n) delimiter between different lines (tokens) \par
+and a semicolon (;) separator between different columns (token_id, \par
+features[1:n]) of each line. We strongly recommend to open some \par
+contract files with a text editor and the dictionaries using a CSV file \par
+reader in order to get familiarised with the encoded format, which is firmly \par
+explained in the rest of this document.\par
+\par
+These are the following directories (datasets):\par
+\par
+* Unlabelled Contracts Dataset: \par
+================================\par
+- The directory (datasets/unlabelled_contracts) contains multiple\par
+compressed files (unlabelled_contracts_X.tar.gz), each one with a different \par
+set of contracts. These sets do not correspond into different contract types\par
+or any other classification.The split of the corpus is just for practical \par
+reasons (e.g. avoid single point of failure during the download process \par
+or maximum file size limitations in specific filesystems).\par
+- These compressed files contain contracts, that have not been annotated \par
+and can only been used for unsupervised tasks, like train word embeddings \par
+(e.g. word2vec, glove, etc.) or extract probabilistic features over\par
+the respective vocabulary.\par
+- Each contract contains a number of sentences, already split between \par
+different lines (one sentence per line) using the default NLTK Sentence \par
+Tokenizer. The sentences have been also tokenized (split) in terms of \par
+words using the default NLTK word tokenizer (TreebankWordTokenizer). Tokens\par
+are split with a single space. All digits have been pre-processed and replaced \par
+with a single character, so  numbers having the same format have been encoded \par
+in the same manner (e.g. '12', '13' both have the same code, '12.3', '24.7' \par
+have another single code). All words that are out of vocabulary have been\par
+replaced with the meta-character 'UNK'.\par
+\par
+For example, a sample file in this corpus contains text such as:\par
+\par
+2 13 455 43 897 87789 3464 564333 3462 245 67868 85278 34535 6 45 37 78976 \par
+UNK 34635 45456 568 568 678 798 UNK 67 456 2345 9368 235 98545 346 87365\par
+\par
+- There is a related CSV file (dictionaries/word_embeddings.csv), which\par
+contains the pre-trained embeddings that were used during experiments, as \par
+also mentioned in the paper. Each line of the .csv file contains a pair: \par
+the code of the specific token (e.g. 3464)  in the first column and 200 \par
+real number values of its word embedding in the rest of the columns.\par
+\par
+\par
+* Labelled Contracts Datasets:\par
+==============================\par
+- The directory (datasets/labelled_contracts) contains two main subdirectories:\par
+(i)  the first one (elements_contracts) contains contracts annotated for the \par
+following contract elements:  Contract Title, Contract Parties, Start Date, \par
+Effective Date, Termination Date,  Contract Period, Contract Value, Governing Law, \par
+Jurisdiction, Legislation Refs. \par
+(ii) the second one (clauses_contracts) contains contracts annotated for Clause \par
+Headings.\par
+\par
+- Both directories have two subdirectories:\par
+(i)  The training directory (/train), which contains the contracts used for \par
+training and validation purposes.\par
+(ii) The test directory (/test), which contains the contracts used for \par
+testing purposes.\par
+\par
+Both of these subdirectories contain contracts in the same encoded format, \par
+which is different from the unlabelled dataset. The contracts (.txt files) \par
+have been pre-processed also using NLTK sentence and word tokenizers. In \par
+contrast with the unlabelled dataset, the sentences are not split between\par
+different lines. Line-breaks inside the text are real line-breaks used in \par
+the initial contracts. Hence, we strongly recommend everyone to use line-breaks \par
+accordingly. During our own experimentation, we represented line-break as a \par
+specific token and in each case we assign zeros in its feature representation. \par
+Each line has been split to tokens,  which have been encoded in the following \par
+format TOKEN_XXX[CATEGORY]. XXX refers to a specific token according to the \par
+represented word. In this encoded format, the encoding of the CATEGORY field\par
+is the following:\par
+\par
+CONTRACT ELEMENT\tab    CATEGORY ENCODING\par
+------------------------ + ------------------\par
+None\tab\tab\tab\'e2\'80\rdblquote > 0\par
+Contract Title \tab\tab\'e2\'80\rdblquote > TIT\par
+Contract Party\tab\tab\'e2\'80\rdblquote > CNP\par
+Start Date\tab\tab\'e2\'80\rdblquote > STD\par
+Effective Date\tab\tab\'e2\'80\rdblquote > EFD\par
+Termination Date\tab\'e2\'80\rdblquote > TED\par
+Contract Period\tab\tab\'e2\'80\rdblquote > PER\par
+Contract Value\tab\tab\'e2\'80\rdblquote > VAL\par
+Governing Law\tab\tab\'e2\'80\rdblquote > GOV\par
+Jurisdiction\tab\tab\'e2\'80\rdblquote > JUR\par
+Legislation Refs.\tab\'e2\'80\rdblquote > LEG\par
+Clause Headings\tab\tab\'e2\'80\rdblquote > HEAD\par
+\par
+\par
+For example, a sample file in the annotated corpus contains text like the\par
+following part:\par
+\par
+TOKEN_2888[0] TOKEN_2889[0] \par
+TOKEN_1490[TIT] TOKEN_6[TIT] \par
+TOKEN_15[0] TOKEN_6[0] TOKEN_2384[0] TOKEN_263[0] TOKEN_28816[STD] TOKEN_28[STD] \par
+TOKEN_25[STD] TOKEN_4376[STD] TOKEN_19[STD] TOKEN_1530[STD] TOKEN_31[0] TOKEN_78167[CNP] \par
+TOKEN_5565[CNP] TOKEN_1539[CNP] TOKEN_19[0] TOKEN_66[0] TOKEN_12279[0] TOKEN_2207[0] \par
+TOKEN_2167[0] TOKEN_22[0] TOKEN_2191[0] TOKEN_408[0] TOKEN_26[0] TOKEN_413[0] \par
+TOKEN_1660[0] TOKEN_8133[0] TOKEN_194[0] TOKEN_57[0] TOKEN_10943[0] TOKEN_74489[0] \par
+TOKEN_61[0] TOKEN_25[0] TOKEN_26[0] TOKEN_8418[0] TOKEN_8419[0] TOKEN_7949[0] \par
+TOKEN_22[0] TOKEN_928[0] TOKEN_78[0] TOKEN_17205[0] TOKEN_562[0] TOKEN_208[0] \par
+TOKEN_508[0] TOKEN_33534[0] TOKEN_25[0] TOKEN_62450[0] TOKEN_50[0] TOKEN_73[0]\par
+\par
+\'e2\'80\rdblquote  There is a related CSV file (dictionaries/encoded_vocabulary.csv), which \par
+contains for each encoded token (TOKEN_CODE): the code of this specific word \par
+(WORD_EMBEDDING_CODE) that matches with the word embeddings file in order to \par
+find the related word embedding, its POS tag (POS_TAG) and the hand-crafted \par
+features. The hand-crafted features are organized in the next columns labeled \par
+with the related names: GENERAL_[1-14], TITLE_[1-3], PARTIES_[1-7], SDATE_[1-5], \par
+EFDATE_[1-5], TDATE_[1-4], GOV_LAW_[1-4], JUR_[1-4], LEG_[1-5], VALUE_[1-4],\par
+PERIOD_[1-5], HEAD_[1-6]\par
+\par
+\'e2\'80\rdblquote  There is also a related CSV file (dictionaries/pos_tag_embeddings.csv), which \par
+contains the POS tag embeddings.\par
+\par
+\'e2\'80\rdblquote  During training we strongly recommend the use of pseudo-zones as described in \par
+the paper. The test contracts of the labeled dataset include gold (correct) \par
+annotations of the extraction zones per contract element type in an XML format \par
+(e.g. <ZONE_NAMING> \'e2\'80\'a6 </ZONE_NAMING>). The annotation names of these zones \par
+are the following and are always coming in pairs (start-end):\par
+\par
+ZONE_NAMING\tab    CONTRACT ELEMENTS\par
+---------------- + --------------------------------------------------------------- \par
+COVER_PAGE  \tab -> Contract Title, Contract Parties, Start Date and Effective Date\par
+INTRODUCTION\tab\'e2\'80\rdblquote > Contract Title, Contract Parties, Start Date and Effective Date\par
+TERMINATION\tab\'e2\'80\rdblquote > Termination Date\par
+TERM\tab\tab\'e2\'80\rdblquote > Contract Period, Termination Date\par
+VALUE\tab\tab\'e2\'80\rdblquote > Contract Value\par
+GOVERNING_LAW\tab\'e2\'80\rdblquote > Governing Law\par
+JURSDICTION\tab\'e2\'80\rdblquote > Jurisdiction\par
+MISCELLANEOUS\tab\'e2\'80\rdblquote > Governing Law, Jurisdiction\par
+MAIN_BODY*\tab\'e2\'80\rdblquote > Clause Headings\par
+(Full Text)**\tab -> Legislation Refs.\par
+\par
+* This annotation type is only included in the clause headings test dataset. \par
+The rest of them are only included in in the elements test dataset. \par
+For experimental testing and comparisons, you will have to create pseudo-zones \par
+of 20 words before/after each line-break (\\n) character across the main body.\par
+\par
+** Legislation refs. have to be tested on the elements test dataset.Specific \par
+zones are not provided since the legislation references can be found all over\par
+the contracts. For experimental testing and comparisons, you will have to \par
+create pseudo-zones of 20 words before/after the following words: Act, ACT, \par
+Code, CODE, Regulation, REGULATION, Amendment, AMENDMENT, Treaty, TREATY. \par
+These words cover the 99,9% of the legislation refs mentioned in the annotated \par
+contracts.\par
+\par
+The encoded tokens of these words (e.g. Act, ACT, etc.) are: 194, 264, 277, \par
+1489, 2291, 4110, 5559, 6052, 7133, 11423, 12963, 18111, 23005, 23387, 34425, \par
+53519, 54580, 56472, 57386, 76355, 103593, 107366, 165333, 165336. There are \par
+multiple encoded tokens per word since each word could be coupled with one or\par
+more POS tags, which brings the final number of the encoded tokens from 10 to \par
+24.\par
+ \par
+\par
+CONTACT\par
+=======\par
+For any further issues, please contact: ihalk@aueb.gr\par
+\par
+The paper is available from:\par
+<{{\field{\*\fldinst{HYPERLINK "https:// http://nlp.cs.aueb.gr/publications.html"}}{\fldrslt{https:// http://nlp.cs.aueb.gr/publications.html\ul0\cf0}}}}\f0\fs22 > and \par
+<{{\field{\*\fldinst{HYPERLINK "http://www.aueb.gr/users/ion/publications.html"}}{\fldrslt{http://www.aueb.gr/users/ion/publications.html\ul0\cf0}}}}\f0\fs22 >.\par
+\par
+I. Chalkidis, I. Androutsopoulos and A. Michos \par
+\par
+This file was last updated: May 18, 2017.\par
+}
+ 
