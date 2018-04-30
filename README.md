@@ -37,5 +37,8 @@ Then we used the union of these two groups, instead of the sum, to account for o
 
 - Figure 7 gives an example where there is a missing labeling in the ground truth, but the model detects it. On the figure, the green box represents the ground truth and the red box is model prediction. In this case, we defined that precision and recall=0. Figure 6 shows that over 25% percentile of the data for non-signature precision and recall are zero.  Manual inspection shows that some of these 25% represent incorrect labeling or noisy artifacts of the scan being recognized incorrectly.  Potentially additional training data could improve these results.
 
-
 ![alt text](https://github.com/CatalystCode/Handwriting/blob/master/Data/images/model_results.png)
+
+
+# Conclusion
+- We invite your feedback and contributions to this solution!
