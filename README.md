@@ -15,7 +15,7 @@ We teamed with major global professional services organization to improve their 
 - We have a sample of our labeled data in the data folder in this repo.  
 - We have the full sample of our labeled data available at this URI. https://handwriting.blob.core.windows.net/leasedata.   
 
-![alt text](https://github.com/CatalystCode/Handwriting/master/data/images/sample_contract.png)
+![alt text](https://github.com/CatalystCode/Handwriting/Data/images/sample_contract.png)
 
 # The Results
 For each image, we defined two groups:
@@ -25,4 +25,4 @@ For each image, we defined two groups:
 Then we used the union of these two groups, instead of the sum, to account for overlapping boxes. We defined ‘success’ for our objective as: 
 -	Ai = intersection between At and Am. 
 
-![alt text](https://github.com/CatalystCode/Handwriting/master/data/images/model_results.png)
+![alt text](https://github.com/CatalystCode/Handwriting/master/Data/images/model_results.png)
