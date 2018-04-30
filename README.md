@@ -1,4 +1,4 @@
-m# Handwriting
+# Handwriting
 Code and procdures for handwriting object detection and recognition
 
 # Business Problem
