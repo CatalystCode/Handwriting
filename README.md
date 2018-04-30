@@ -25,4 +25,17 @@ For each image, we defined two groups:
 Then we used the union of these two groups, instead of the sum, to account for overlapping boxes. We defined ‘success’ for our objective as: 
 -	Ai = intersection between At and Am. 
 
+-We refined the traditional intersection over union (IOU) object detection results measures for our task, as we were interested in our ability to retrieve just the areas of interest within a machine printed text, and within the non-signature handwriting to detect as precisely as possible to enable accurate OCR in the later process.  We defined our results on a per image (or per page) basis as follows:
+-	per-image recall = Ai / At, i.e. the fraction of target pixels actually covered by the model.  
+-	per-image precision = Ai / Am, i.e. what fraction of the pixels detected were in the actual handwriting box. 
+
+-Further, we measured 71 contract pages from our test set which had both signature and non-signature handwriting present on the image from the same government contract data source, not yet seen by our model.  We calculated per image recall and precision for each category with our test set.  We also plotted the boxplot in Figure 6 showing min, max, 25% quantile, 75% quantile and median of these metrics over all the test images.  
+
+- Our results on the handwriting object detection were relatively good for both signature handwriting detection and non-signature handwriting object classes.  The performance of non-signature handwriting detection is slightly worse and more variable than that of signature handwriting detection. 
+
+- For one contract page, if the model detects non-signature handwriting but there is no non-signature handwriting in ground truth in that detected location or vice versa, we will define precision = 0 and recall =0, which gives us a conservative performance measure. 
+
+- Figure 7 gives an example where there is a missing labeling in the ground truth, but the model detects it. On the figure, the green box represents the ground truth and the red box is model prediction. In this case, we defined that precision and recall=0. Figure 6 shows that over 25% percentile of the data for non-signature precision and recall are zero.  Manual inspection shows that some of these 25% represent incorrect labeling or noisy artifacts of the scan being recognized incorrectly.  Potentially additional training data could improve these results.
+
+
 ![alt text](https://github.com/CatalystCode/Handwriting/blob/master/Data/images/model_results.png)
