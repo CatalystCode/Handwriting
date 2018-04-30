@@ -25,4 +25,4 @@ For each image, we defined two groups:
 Then we used the union of these two groups, instead of the sum, to account for overlapping boxes. We defined ‘success’ for our objective as: 
 -	Ai = intersection between At and Am. 
 
-![alt text](https://github.com/CatalystCode/Handwriting/master/Data/images/model_results.png)
+![alt text](https://github.com/CatalystCode/Handwriting/blob/master/Data/images/model_results.png)
