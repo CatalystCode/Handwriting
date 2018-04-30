@@ -5,9 +5,9 @@ Code and procdures for handwriting object detection and recognition
 We teamed with major global professional services organization to improve their contract search and knowledge extraction results. 
 
 # The Solution
-We used handwriting object detection followed by OCR on the non-signature handwriting.  
-We inserted the OCR handwriting into the rest of the machine printed OCR result.
-We used the new Azure ML Package for Computer Vision to make the object detection model solution simpler.
+- We used handwriting object detection followed by OCR on the non-signature handwriting.  
+- We inserted the OCR handwriting into the rest of the machine printed OCR result.
+- We used the new Azure ML Package for Computer Vision to make the object detection model solution simpler.
 
 # The Data
 - We used a public repository of government contracts available here. https://www.gsa.gov/real-estate/real-estate-services/leasing-policy-procedures/lease-documents 
@@ -24,4 +24,4 @@ Then we used the union of these two groups, instead of the sum, to account for o
 -	Ai = intersection between At and Am. 
 
 
-![alt text](https://github.com/SingingData/StockPerformanceClassification/blob/master/images/Model_Training_accuracyandloss.png)
+![alt text](https://github.com/CatalystCode/Handwriting/master/data/images/Model_Results.png)
