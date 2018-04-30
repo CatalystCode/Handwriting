@@ -15,7 +15,7 @@ We teamed with major global professional services organization to improve their 
 - We have a sample of our labeled data in the data folder in this repo.  
 - We have the full sample of our labeled data available at this URI. https://handwriting.blob.core.windows.net/leasedata.   
 
-![alt text](https://github.com/CatalystCode/Handwriting/Data/images/sample_contract.png)
+![alt text](https://github.com/CatalystCode/Handwriting/blob/master/Data/images/sample_contract.png)
 
 # The Results
 For each image, we defined two groups:
