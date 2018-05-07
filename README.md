@@ -7,7 +7,7 @@ We teamed with major global professional services organization to improve their 
 # The Solution
 - We used handwriting object detection followed by OCR on the non-signature handwriting.  
 - We inserted the OCR handwriting into the rest of the machine printed OCR result.
-- We used the new Azure ML Package for Computer Vision to make the object detection model solution simpler.
+- We used the new Azure ML Package for Computer Vision to make the object detection model solution simpler.  https://docs.microsoft.com/en-us/python/api/overview/azure-machine-learning/computer-vision?view=azure-python
 
 # The Data
 - We used a public repository of government contracts available here. https://www.gsa.gov/real-estate/real-estate-services/leasing-policy-procedures/lease-documents 
