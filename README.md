@@ -1,5 +1,5 @@
 # Handwriting
-Code and procdures for handwriting object detection and recognition
+Code and procedures for handwriting object detection and recognition
 
 # Business Problem
 We teamed with major global professional services organization to improve their contract search and knowledge extraction results. 
